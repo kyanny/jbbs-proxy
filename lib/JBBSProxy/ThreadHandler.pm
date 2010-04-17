@@ -24,10 +24,12 @@ sub on_response {
 
     my @labels = qw(number name email created_at body title);
     my @comments;
+    my $title = '';
     for my $line (split /\n/, $content) {
         my @cols = split /<>/, $line;
         my %comment;
         @comment{@labels} = @cols;
+        $title = $comment{title} if $comment{title};
         push @comments, \%comment;
     }
 
@@ -35,6 +37,7 @@ sub on_response {
         category => $category,
         address => $address,
         number => $number,
+        title => $title,
         comments => \@comments,
     });
 }
