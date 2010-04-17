@@ -26,12 +26,9 @@ sub on_response {
     my @comments;
     for my $line (split /\n/, $content) {
         my @cols = split /<>/, $line;
-        my $comment = {};
-        for (my $i = 0; $i < scalar @labels; $i++) {
-            my $label = $labels[$i];
-            $comment->{$labels[$i]} = $cols[$i];
-        }
-        push @comments, $comment;
+        my %comment;
+        @comment{@labels} = @cols;
+        push @comments, \%comment;
     }
 
     $self->render('thread.html', {
