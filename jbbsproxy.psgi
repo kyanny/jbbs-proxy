@@ -68,13 +68,13 @@ use Encode;
 use Encode::Guess;
 
 sub get {
-    my ($self, $category, $address, $number) = @_;
+    my ($self, $category, $address, $number, $option) = @_;
     my $client = Tatsumaki::HTTPClient->new;
-    $client->get("http://jbbs.livedoor.jp/bbs/rawmode.cgi/$category/$address/$number/", $self->async_cb(sub { $self->on_response($category, $address, $number, @_) }));
+    $client->get("http://jbbs.livedoor.jp/bbs/rawmode.cgi/$category/$address/$number/$option", $self->async_cb(sub { $self->on_response($category, $address, $number, $option, @_) }));
 }
 
 sub on_response {
-    my ($self, $category, $address, $number, $res) = @_;
+    my ($self, $category, $address, $number, $option, $res) = @_;
     $self->response->content_type('text/html; charset=utf-8');
 
     my $content = $res->content;
@@ -110,7 +110,7 @@ my $app = Tatsumaki::Application->new([
     '/' => 'RootHandler',
     '/about' => 'AboutHandler',
     '/http://jbbs.livedoor.jp/(\w+)/(\d+)/?' => 'SubjectHandler',
-    '/http://jbbs.livedoor.jp/bbs/read\.cgi/(\w+)/(\d+)/(\d+)/?' => 'ThreadHandler',
+    '/http://jbbs.livedoor.jp/bbs/read\.cgi/(\w+)/(\d+)/(\d+)/?(l?[0-9-]+n?)?' => 'ThreadHandler',
 ]);
 
 $app->template_path('template');
