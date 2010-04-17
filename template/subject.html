@@ -1,0 +1,19 @@
+<html>
+<body>
+<ul>
+
+% my $arg = shift;
+% my $threads = $arg->{threads};
+% my $category = $arg->{category};
+% my $address = $arg->{address};
+% my $title = 'hoge';
+
+<h1><%= $title %></h1>
+
+% for my $thread (@$threads) {
+<li><a href="/http://jbbs.livedoor.jp/bbs/read.cgi/<%= $category %>/<%= $address %>/<%= $thread->{number} %>/"><%= $thread->{title} %></a></li>
+% }
+
+</ul>
+</body>
+</html>

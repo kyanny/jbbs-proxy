@@ -1,0 +1,21 @@
+<html>
+<body>
+% my $arg = shift;
+% my $category = $arg->{category};
+% my $address = $arg->{address};
+% my $number = $arg->{number};
+% my $comments = $arg->{comments};
+% my $title = 'hoge';
+
+<h1><%= $title %></h1>
+
+<ul>
+
+% for my $comment (@$comments) {
+<li><%= $comment->{number} %> : <%= $comment->{name} %> : <%= $comment->{body} %></li>
+% }
+
+</ul>
+
+</body>
+</html>
