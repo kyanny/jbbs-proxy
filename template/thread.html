@@ -9,13 +9,24 @@
 
 <h1><%= $title %></h1>
 
-<ul>
-
+<div>
 % for my $comment (@$comments) {
-<li><%= $comment->{number} %> : <%= $comment->{name} %> : <%= $comment->{body} %></li>
+<p>
+<%= $comment->{number} %>:
+% if ($comment->{email}) {
+<a href="<%= $comment->{email} %>">
+% }
+<%= $comment->{name} %>
+% if ($comment->{email}) {
+</a>
+% }
+:
+<%= $comment->{created_at} %><br />
+<%= Text::MicroTemplate::encoded_string($comment->{body}) %>
+</p>
 % }
 
-</ul>
+</div>
 
 </body>
 </html>
