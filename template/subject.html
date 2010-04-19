@@ -18,7 +18,7 @@
     <a id="backButton" class="button" href="#"></a>
   </div>
 
-  <ul id="threads" title="<%= $title %>">
+  <ul id="threads" title="<%= $title %>" selected="true">
 % for my $thread (@$threads) {
     <li><a href="/http://jbbs.livedoor.jp/bbs/read.cgi/<%= $category %>/<%= $address %>/<%= $thread->{number} %>/l50"><%= $thread->{title} %></a></li>
 % }
