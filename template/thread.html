@@ -21,32 +21,12 @@
 
   <ul id="comments" title="<%= $title %>" selected="true">
 % for my $comment (@$comments) {
-    <li><%= Text::MicroTemplate::encoded_string($comment->{body}) %></li>
+    <li>
+      <%= $comment->{number} <%= $comment->{name} %> <%= $comment->{created_at} %><br />
+      <%= Text::MicroTemplate::encoded_string($comment->{body}) %>
+    </li>
 % }
   </ul>
-
-<!--
-<h1><%= $title %></h1>
-
-<div>
-% for my $comment (@$comments) {
-<p>
-<%= $comment->{number} %>:
-% if ($comment->{email}) {
-<a href="<%= $comment->{email} %>">
-% }
-<%= $comment->{name} %>
-% if ($comment->{email}) {
-</a>
-% }
-:
-<%= $comment->{created_at} %><br />
-<%= Text::MicroTemplate::encoded_string($comment->{body}) %>
-</p>
-% }
-
-</div>
--->
 
 </body>
 </html>
