@@ -1,5 +1,11 @@
+% my $arg = shift;
+% my $threads = $arg->{threads};
+% my $category = $arg->{category};
+% my $address = $arg->{address};
+% my $title = 'hoge';
 <html>
 <head>
+<title><%= $title %></title>
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
 <link rel="apple-touch-icon" href="/static/iui/iui-logo-touch-icon.png" />
 <meta name="apple-touch-fullscreen" content="YES" />
@@ -7,20 +13,15 @@
 <script type="application/x-javascript" src="/static/iui/iui.js"></script>
 </head>
 <body>
-<ul>
-
-% my $arg = shift;
-% my $threads = $arg->{threads};
-% my $category = $arg->{category};
-% my $address = $arg->{address};
-% my $title = 'hoge';
-
-<h1><%= $title %></h1>
+  <div class="toolbar">
+    <h1 id="pageTitle"></h1>
+    <a id="backButton" class="button" href="#"></a>
+  </div>
 
 % for my $thread (@$threads) {
-<li><a href="/http://jbbs.livedoor.jp/bbs/read.cgi/<%= $category %>/<%= $address %>/<%= $thread->{number} %>/l50"><%= $thread->{title} %></a></li>
+  <ul id="t<%= $thread->{number} %>" title="<%= $title %>" selected="true">
+    <li><a href="/http://jbbs.livedoor.jp/bbs/read.cgi/<%= $category %>/<%= $address %>/<%= $thread->{number} %>/l50"><%= $thread->{title} %></a></li>
+  </ul>
 % }
-
-</ul>
 </body>
 </html>
