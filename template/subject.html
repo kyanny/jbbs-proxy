@@ -18,10 +18,10 @@
     <a id="backButton" class="button" href="#"></a>
   </div>
 
+  <ul id="threads" title="<%= $title %>">
 % for my $thread (@$threads) {
-  <ul id="t<%= $thread->{number} %>" title="<%= $title %>">
     <li><a href="/http://jbbs.livedoor.jp/bbs/read.cgi/<%= $category %>/<%= $address %>/<%= $thread->{number} %>/l50"><%= $thread->{title} %></a></li>
-  </ul>
 % }
+  </ul>
 </body>
 </html>
