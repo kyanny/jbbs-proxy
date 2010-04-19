@@ -22,8 +22,7 @@
   <ul id="comments" title="<%= $title %>" selected="true">
 % for my $comment (@$comments) {
     <li>
-      <%= $comment->{number} %> <%= $comment->{name} %><br />
-      <%= $comment->{created_at} %><br />
+      <%= $comment->{number} %> <%= $comment->{name} %> <%= $comment->{created_at} %><br />
       <%= Text::MicroTemplate::encoded_string($comment->{body}) %>
     </li>
 % }
