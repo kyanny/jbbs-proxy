@@ -1,4 +1,4 @@
-% my $title = 'JBBS Proxy for Mobile Safari';
+% my $title = 'したらば掲示板ビューア for Mobile Safari';
 <html>
 <head>
 <title><%= $title %></title>
@@ -10,14 +10,24 @@
 </head>
 <body>
 
-<h1><%= $title %></h1>
+    <div class="toolbar">
+        <h1 id="pageTitle"></h1>
+        <a id="backButton" class="button" href="#"></a>
+        <a class="button" href="#searchForm">Search</a>
+    </div>
 
-<form action="" method="post">
-<input type="text" name="url" value="" />
-</form>
+    <form id="searchForm" class="dialog" action="" selected="true">
+        <fieldset>
+            <h1>iPhone/iPod Touch用に変換</h1>
+            <label>掲示板のURL:</label>
+            <input id="url" type="text" name="url"/>
+            <input type="submit" />
+        </fieldset>
+    </form>
 
-<div>
-<a href="/about">JBBS Proxy for Mobile Safari について</a>
-</div>
+    <div>
+      <a href="/about">JBBS Proxy for Mobile Safari について</a>
+    </div>
+
 </body>
 </html>
