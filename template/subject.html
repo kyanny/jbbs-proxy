@@ -19,7 +19,7 @@
   </div>
 
 % for my $thread (@$threads) {
-  <ul id="t<%= $thread->{number} %>" title="<%= $title %>" selected="true">
+  <ul id="t<%= $thread->{number} %>" title="<%= $title %>">
     <li><a href="/http://jbbs.livedoor.jp/bbs/read.cgi/<%= $category %>/<%= $address %>/<%= $thread->{number} %>/l50"><%= $thread->{title} %></a></li>
   </ul>
 % }
