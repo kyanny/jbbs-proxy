@@ -20,8 +20,10 @@
   </div>
 
   <ul id="comments" title="<%= $title %>" selected="true">
+% use Data::Dumper;
 % for my $comment (@$comments) {
     <li>
+      <%= Dumper($comment) %>
       <%= $comment->{number} <%= $comment->{name} %> <%= $comment->{created_at} %><br />
       <%= Text::MicroTemplate::encoded_string($comment->{body}) %>
     </li>
